@@ -1,10 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import TaskList from '@/components/TaskList';
-import TaskModel from '@/components/TaskModel';
-import TaskView from '@/components/TaskView';
-import TaskForm from '@/components/TaskForm';
-import { useAuth } from '@/lib/AuthContext';
+import TaskList from '/components/TaskList';
+import TaskModel from '/components/TaskModel';
+import TaskView from '/components/TaskView';
+import TaskForm from '/components/TaskForm';
+import { useAuth } from '/lib/AuthContext';
 import { useRouter } from 'next/navigation';
 
 export default function Page() {
