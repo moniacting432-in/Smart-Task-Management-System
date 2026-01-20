@@ -54,30 +54,46 @@ Task Management Features
 
 
 
-Backend (Node.js + Express)
+Backend (Next.js API Routes)
+
+The backend of this project is implemented using **Next.js API routes**, which serve as the server-side layer of the application.  
+All backend logic — including authentication, task management, and database operations — is handled inside the `/app/api/` folder.  
+This eliminates the need for a separate Express.js server.
+
 Folder Structure
-backend/
+app/
 │
-├── models/
-├── controllers/
-├── routes/
-├── middleware/
-└── config/
+├── api/
+│ ├── auth/
+│ │ ├── register/route.js → Handles user registration
+│ │ ├── login/route.js → Handles user login and JWT token generation
+│ │ └── profile/route.js → Returns logged-in user details
+│ │
+│ └── tasks/
+│ ├── route.js → Handles GET (fetch all) and POST (create task)
+│ └── [id]/route.js → Handles GET, PUT, DELETE for individual tasks
+│
+├── components/ → Reusable UI components
+├── lib/ → Database connection and helper functions
+└── models/ → Mongoose schemas (User, Task)
+
+
 
 API Endpoints
 Authentication APIs
 
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Login user |
-| GET | `/auth/profile` | Get user details |
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login user and issue JWT token |
+| GET | `/api/auth/profile` | Fetch logged-in user details |
 
 Task APIs (Protected)
 
-| POST | `/tasks` | Create a task |
-| GET | `/tasks` | Fetch all user tasks |
-| GET | `/tasks/:id` | Fetch single task |
-| PUT | `/tasks/:id` | Update task |
-| DELETE | `/tasks/:id` | Delete task |
+| POST | `/api/tasks` | Create a new task |
+| GET  | `/api/tasks` | Get all user tasks |
+| GET  | `/api/tasks/:id` | Get details of a single task |
+| PUT | `/api/tasks/:id` | Update an existing task |
+| DELETE | `/api/tasks/:id` | Delete a task |
+
 
 
 
